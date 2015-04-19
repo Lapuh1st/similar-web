@@ -1,0 +1,47 @@
+<div class="content">
+
+  <form ng-submit="setActiveSiteUrl()" class="search-area">
+    <button type="submit" id="submit" value="Submit"><i class="fa fa-search"></i></button>
+    <input placeholder="{{activeSite}}" class="search-field" type="text" ng-model="search"/>
+  </form>
+
+  <div class="description">
+    <div class="domain">
+      <img src="{{site.FavIcon}}" alt="favicon"/>
+      <span>{{activeSite}}</span>
+    </div>
+    <div class="domain-title">
+      <span class="title">{{site.Title}}</span>
+      <span class="category">#{{site.Category}}</span>
+    </div>
+
+    <div class="ranking">
+      <ul>
+        <li>
+          <span class="rank">Global Rank</span>
+          <span class="count">{{site.GlobalRank}}</span>
+        </li>
+        <li>
+          <span class="rank">Country Rank</span>
+          <span class="count">{{site.CountryRank}}</span>
+        </li>
+        <li>
+          <span class="rank">Category Rank</span>
+          <span class="count">{{site.CategoryRank}}</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <h2 class="similar-title">Similar Sites</h2>
+  <div class="line"></div>
+  <ul class="similar-sites">
+    <li ng-repeat="site in (resultSite = (site.SimilarSites | filter:search))">
+      <img src="{{site.FavIcon}}" alt="favicon"/>
+      <span ng-click="setActiveSiteUrl(site.Url)">{{site.Url}}</span>
+    </li>
+  </ul>
+</div>
+
+<iframe ng-src="{{iframeSrc}}" ></iframe>
